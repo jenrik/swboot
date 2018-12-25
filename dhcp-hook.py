@@ -15,11 +15,11 @@ if sys.argv[1] == "commit":
   db.set(swIp, swName)
   db.set('ip-{}'.format(swIp), swMac)
   db.set('mac-{}'.format(swMac), swIp)
-  if swRelay != '0.0.0.0':
-    db.set('relay-{}'.format(SwIp), swRelay)
-    sqlidb = sqlite3.connect('/etc/ipplan.db')
-    cursor = sqlidb.cursor()
-    sql = "SELECT short_name FROM network WHERE ipv4_gateway_txt = ?"
-    networkname = cursor.execute(sql, (swRelay, )).fetchone()[0]
-    db.set('networkname-{}'.format(swIp), networkname)
+ # if swRelay != '0.0.0.0':
+ #   db.set('relay-{}'.format(swIp), swRelay)
+ #   sqlidb = sqlite3.connect('/etc/ipplan.db')
+ #   cursor = sqlidb.cursor()
+ #   sql = "SELECT short_name FROM network WHERE ipv4_gateway_txt = ?"
+ #   networkname = cursor.execute(sql, (swRelay, )).fetchone()[0]
+ #   db.set('networkname-{}'.format(swIp), networkname)
   os.system("/scripts/swboot/configure " + swIp + " &")

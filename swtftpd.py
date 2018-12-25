@@ -45,7 +45,7 @@ def generate(out, ip, switch):
 
   if not model in config.models:
     sw_reload(ip)
-    error("Template for model " + model_id + " not found")
+    error("Template for model " + model + " not found")
     return
 
   # Throws exception if something bad happens
@@ -63,8 +63,11 @@ def generate(out, ip, switch):
   
 def base(out, switch):
   out.write("snmp-server community private rw\n")
+  out.write("snmp-server system-shutdown\n")
+  out.write("spanning-tree portfast default\n")
   out.write("hostname BASE\n")
-  out.write("no vlan 2-4094\n")
+  out.write("no vlan 2-1001\n")
+  out.write("no vlan 1006-4094\n")
   out.write("end\n\n")
 
 def snmpv3_command(var, host, cmd):
@@ -140,7 +143,7 @@ def file_callback(context):
     f.seek(0)
     return f
 
-  if not re.match('[A-Z]{1,2}[0-9][0-9]-[A-C]', switch):
+  if not re.match('[A-Z]{1,2}[0-9][0-9]-[A-Z]', switch):
     sw_reload(ip)
     error("Switch", ip, "does not match regexp, invalid option 82? Received ", option82, " as option 82")
     return None
@@ -163,7 +166,7 @@ log("swtftpd started")
 tftpy.setLogLevel(logging.WARNING)
 server = tftpy.TftpServer(file_callback)
 try:
-  server.listen("192.168.40.10", 69)
+  server.listen("10.0.13.2", 69)
 except tftpy.TftpException, err:
   sys.stderr.write("%s\n" % str(err))
   sys.exit(1)
