@@ -64,7 +64,6 @@ def generate(out, ip, switch):
 def base(out, switch):
   out.write("snmp-server community private rw\n")
   out.write("snmp-server system-shutdown\n")
-  out.write("spanning-tree portfast default\n")
   out.write("hostname BASE\n")
   out.write("no vlan 2-1001\n")
   out.write("no vlan 1006-4094\n")

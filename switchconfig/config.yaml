@@ -36,10 +36,20 @@ models:
   - name: "WS-C2960-24PC-S"
     path: "/scripts/swboot/switchconfig/c2960-24.cfg"
     ports: 24
+  - name: "WS-C2960-24LT-L"
+    path: "/scripts/swboot/switchconfig/c2960-24.cfg"
+    ports: 24
   - name: "WS-C2960-8TC-L"
+    path: "/scripts/swboot/switchconfig/c2960-8.cfg"
+    ports: 8
+  - name: "WS-C2960-8TC-S"
     path: "/scripts/swboot/switchconfig/c2960-8.cfg"
     ports: 8
 
 static_files:
   - c2950.bin: "/scripts/swboot/switchconfig/ios/c2950-i6k2l2q4-mz.121-22.EA14.bin"
+  - c2960-lanbase.tar: "/scripts/swboot/switchconfig/ios/c2960-lanbasek9-tar.150-2.SE11.tar"
+  - c2960-lanlite.tar: "/scripts/swboot/switchconfig/ios/c2960-lanlitek9-tar.150-2.SE11.tar"
+  - c3560-ip.tar: "/scripts/swboot/switchconfig/ios/c3560-ipservicesk9-tar.150-2.SE11.tar"
+  - c4500e.bin: "/scripts/swboot/switchconfig/ios/cat4500e-entservicesk9-mz.152-2.E8.bin"
 
