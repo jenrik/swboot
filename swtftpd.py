@@ -171,11 +171,21 @@ def file_callback(context):
     return f
 
 
+listen_ip = '10.0.13.2'
+
+if len(sys.argv) > 2 or (len(sys.argv) >= 2 and sys.argv[1] == 'help'):
+    print('usage: {} [listen_ip]'.format(sys.argv[0]))
+    print('default listening address is {}'.format(listen_ip))
+    sys.exit(1)
+
+if len(sys.argv) == 2:
+    listen_ip = sys.argv[1]
+
 log("swtftpd started")
 tftpy.setLogLevel(logging.WARNING)
 server = tftpy.TftpServer(file_callback)
 try:
-    server.listen("10.0.13.2", 69)
+    server.listen(listen_ip, 69)
 except tftpy.TftpException as err:
     sys.stderr.write("%s\n" % str(err))
     sys.exit(1)
