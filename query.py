@@ -1,11 +1,9 @@
-import netsnmp
-import config
 import sys
 import sqlite3
 
 if len(sys.argv) < 2:
-  print "Usage:", sys.argv[0], " D29-A dWS-C2950T-24"
-  sys.exit(1)
+    print("Usage:", sys.argv[0], " D29-A dWS-C2950T-24")
+    sys.exit(1)
 
 switch = sys.argv[1]
 
@@ -22,4 +20,4 @@ cursor = db.cursor()
 
 row = cursor.execute(sql, ('%s%%' % switch.lower(),)).fetchone()
 
-print row
+print(row)
