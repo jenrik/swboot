@@ -5,4 +5,4 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-nmap 192.168.$1.50-250 -sP -oG - | awk '/Up/ {print $2}' | xargs -P 8 -n 1 ../reload
+nmap 192.168.$1.50-250 -sP -oG - | awk '/Up/ {print $2}' | xargs -P 8 -n 1 ./reload

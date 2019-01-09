@@ -5,7 +5,7 @@ for row in $(sqlite3 /etc/ipplan.db "SELECT host.ipv4_addr_txt, host.name FROM h
 do
   ip=$(echo $row | cut -f 1 -d '|')
   name=$(echo $row | cut -f 2 -d '|')
-  snmprw=$(python $(dirname $0)/../config.py dump-snmp-rw $name)
+  snmprw=$(python $(dirname $0)/dump-snmp-rw.py $name)
   echo "echo '# Reloading $name'"
   echo sleep 1
   echo snmpset -v 2c -c "${snmprw}" $ip .1.3.6.1.4.1.9.2.9.9.0 i 2

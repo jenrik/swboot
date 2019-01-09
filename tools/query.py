@@ -1,8 +1,11 @@
+#!/usr/bin/env python3
 import sys
 import sqlite3
 
 if len(sys.argv) < 2:
-    print("Usage:", sys.argv[0], " D29-A dWS-C2950T-24")
+    print('Fetch switch configuration from ipplan.db')
+    print('')
+    print("Usage:", sys.argv[0], " switch_name")
     sys.exit(1)
 
 switch = sys.argv[1]

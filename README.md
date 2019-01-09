@@ -17,10 +17,10 @@ License is GPLv3 if nothing else is stated.
     include "/scripts/swboot/dhcpd.conf";
 
 ## Start swtftpd
-    sudo python swtftpd.py
+    sudo python3 swtftpd.py
 
 ## Test generation of configuration
-    python generate.py D20-A WS-C2950T-24
+    ./tools/generate-config.py D20-A WS-C2950T-24
 
 ## Boot procedure
 

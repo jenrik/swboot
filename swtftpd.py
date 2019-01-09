@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import sys, logging
 import tftpy
 import tempfile
@@ -9,7 +9,7 @@ import traceback
 import re
 import os
 
-import config
+from lib import config
 
 db = redis.Redis()
 
@@ -34,7 +34,6 @@ def sw_reload(ip):
 
 def generate(out, ip, switch):
     # Get Cisco model name (two tries)
-    var = None
     model = None
     for _ in range(2):
         var = netsnmp.Varbind('.1.3.6.1.2.1.47.1.1.1.1.13.1')
